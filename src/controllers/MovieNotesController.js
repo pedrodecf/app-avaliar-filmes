@@ -4,7 +4,7 @@ class MovieNotesController {
     async create (request, response) {
         const { title, description, rating, movie_tags } = request.body;
 
-        const { user_id } = request.params;
+        const user_id = request.user.id;
         
         const  [movie_notes_id] = await knex("movie_notes").insert({
             title,
@@ -48,7 +48,7 @@ class MovieNotesController {
     };
 
     async index (request, response) {
-        const { user_id } = request.params;
+        const user_id = request.user.id;
 
         const { title, movie_tags } = request.query;
 
