@@ -27,8 +27,7 @@ class MovieNotesController {
     };
 
     async show (request, response) {
-        const { id } = request.query;
-        console.log(id)
+        const { id } = request.params;
         const movie_notes = await knex("movie_notes").where({ id }).first();
         const movie_tags = await knex("movie_tags").where({ movie_notes_id: id }).orderBy("name");        
 
